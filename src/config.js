@@ -3,5 +3,5 @@ export const API_PROXY_PROD = {
 };
 export const API_PROXY_DEV = {
     host: 'https://dp.nerdlinux.com',
-    port: '18080',
+    port: 18080,
 };

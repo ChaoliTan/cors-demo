@@ -5,9 +5,10 @@
 import axios from 'axios';
 import { API_PROXY_DEV, API_PROXY_PROD } from '../config';
 
-console.log(process.env);
-
 const proxy = process.env.NODE_ENV === 'development' ? API_PROXY_DEV : API_PROXY_PROD;
+const baseUrl = proxy.host + (proxy.port && `:${proxy.port}`);
+axios.defaults.headers = { 'Content-type': 'application/x-www-form-urlencoded' };
+axios.defaults.baseURL = baseUrl;
 
 export default function ajax(url, data = {}, type = 'GET') {
     if (type === 'GET') {
