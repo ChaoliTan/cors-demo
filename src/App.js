@@ -1,9 +1,10 @@
+import MenuCarousel from './pages/menu';
 function App() {
-  return (
-    <div>
-      <p>Test app</p>
-    </div>
-  )
+    return (
+        <div>
+            <MenuCarousel />
+        </div>
+    );
 }
 
-export default App
+export default App;
