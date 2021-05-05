@@ -6,4 +6,4 @@
 import ajax from './ajax';
 
 // pull menu img
-export const pullMenu = () => ajax('/MerchantPhoto/List?merchantId=718', {}, 'POST');
+export const pullMenu = () => ajax('/MerchantPhoto/List?merchantId=10684&mediaType=1&category=2', {}, 'POST');

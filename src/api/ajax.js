@@ -24,16 +24,12 @@ export default function ajax(url, data = {}, type = 'GET') {
             paramStr = paramStr.substring(0, paramStr.length - 1);
         }
         // 使用axios发get请求
-        return axios.get(url + '?' + paramStr, { proxy });
+        return axios.get(url + '?' + paramStr);
     }
 
     if (type === 'POST') {
         // 发送POST请求
         // 使用axios发post请求
-        return axios
-            .post(url, data, {
-                proxy,
-            })
-            .then((res) => console.log({ res: res.data.data }));
+        return axios.post(url, data);
     }
 }
