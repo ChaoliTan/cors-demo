@@ -3,18 +3,13 @@
  * 函数的返回值是promise对象
  */
 import axios from 'axios';
-import { API_HOST_TEST, API_HOST } from '../config';
+import { API_PROXY_DEV, API_PROXY_PROD } from '../config';
 
 console.log(process.env);
 
-let baseUrl;
-if (process.env.NODE_ENV === 'development') {
-    baseUrl = API_HOST_TEST;
-} else {
-    baseUrl = API_HOST;
-}
+const proxy = process.env.NODE_ENV === 'development' ? API_PROXY_DEV : API_PROXY_PROD;
+
 export default function ajax(url, data = {}, type = 'GET') {
-    url = baseUrl + url;
     if (type === 'GET') {
         // 发送GET请求
         // 拼请求参数串
@@ -28,10 +23,16 @@ export default function ajax(url, data = {}, type = 'GET') {
             paramStr = paramStr.substring(0, paramStr.length - 1);
         }
         // 使用axios发get请求
-        return axios.get(url + '?' + paramStr);
-    } else {
+        return axios.get(url + '?' + paramStr, { proxy });
+    }
+
+    if (type === 'POST') {
         // 发送POST请求
         // 使用axios发post请求
-        return axios.post(url, data);
+        return axios
+            .post(url, data, {
+                proxy,
+            })
+            .then((res) => console.log({ res: res.data.data }));
     }
 }

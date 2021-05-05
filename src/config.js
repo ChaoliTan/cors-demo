@@ -1,3 +1,7 @@
-export const API_HOST = "https://cmsapi.fantuan.ca"
-
-export const API_HOST_TEST = "https://dp.nerdlinux.com:18080"
+export const API_PROXY_PROD = {
+    host: 'https://cmsapi.fantuan.ca',
+};
+export const API_PROXY_DEV = {
+    host: 'https://dp.nerdlinux.com',
+    port: '18080',
+};
